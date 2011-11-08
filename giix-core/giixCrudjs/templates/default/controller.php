@@ -27,7 +27,7 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 		$this->performAjaxValidation($model, '<?php echo $this->class2id($this->modelClass)?>-form');
 <?php endif; ?>
 		
-		if (isset($_POST)) {
+		if (isset($_POST) && !empty($_POST)) {
                         foreach($_POST as $k=>$v){
                             $_POST['<?php echo $this->modelClass; ?>'][$k] = $v;
                         }
@@ -70,7 +70,7 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 		$this->performAjaxValidation($model, '<?php echo $this->class2id($this->modelClass)?>-form');
 <?php endif; ?>
 
-		if (isset($_POST)) {
+		if (isset($_POST) && !empty($_POST)) {
                         foreach($_POST as $k=>$v){
                             $_POST['<?php echo $this->modelClass; ?>'][$k] = $v;
                         }
@@ -163,12 +163,16 @@ class <?php echo $this->controllerClass; ?> extends <?php echo $this->baseContro
 		if (isset($_GET['<?php echo $this->modelClass; ?>']))
 			$model->attributes = $_GET['<?php echo $this->modelClass; ?>'];
 
-                if (isset($_GET['output']) && $_GET['output']=='json')
+                if (isset($_GET['output']) && $_GET['output']=='json') {
                     $this->renderJson($model, $total);
+                } else {
+                    $model = new <?php echo $this->modelClass; ?>('search');
+                    $model->unsetAttributes();
                 
-		$this->render('admin', array(
-			'model' => $model,
-		));
+                    $this->render('admin', array(
+                            'model' => $model,
+                    ));
+                }
 	}
 
 }

@@ -234,7 +234,8 @@ class GiixCrudjsCode extends CrudCode {
                             anchor: '100%'
                         },";			
                           return "$output";
-		} else if (strtoupper($column->dbType) == 'DATE') {
+		} else if (strtoupper($column->dbType) == 'DATE'
+                        || strtoupper($column->dbType) == 'DATETIME') {
                     /*
 			return "\$form->widget('zii.widgets.jui.CJuiDatePicker', array(
 			'model' => \$model,
