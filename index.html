@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>E-xgen by bluejedi</title>
+    
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>E-xgen</h1>
+        <p>extjs crud generator for yii</p>
+        <p class="view"><a href="https://github.com/bluejedi/e-xgen">View the Project on GitHub <small>bluejedi/e-xgen</small></a></p>
+        <ul>
+          <li><a href="https://github.com/bluejedi/e-xgen/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/bluejedi/e-xgen/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/bluejedi/e-xgen">Fork On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <p>...overview of the extension...
+ExGen is gii Extended, an extjs code generator for Yii PHP framework.</p>
+
+<p>ExGen is inspired and based on giix by mentel, web app generator by derelict and gii-template-collection (gtc), by Herbert Maschke (thyseus).</p>
+
+<p>ExGen is free software and is dual-licensed under the terms of the new BSD License and under the terms of GNU GPL v3. See the LICENSE file</p>
+
+<p>requirements 
+requirements of using this extension extjs 3.4.0 and Yii 1.1.8 or above</p>
+
+<p>Usage</p>
+
+<p>extract to extension folder
+copy webapp and extjs in extension folder to theme folder
+copy js folder in extension folder to base path</p>
+
+<p>configure config/main php</p>
+
+<pre><code>[php]
+'modules'=&gt;array(
+        // uncomment the following to enable the Gii tool
+        ...
+        'gii'=&gt;array(
+            'class'=&gt;'system.gii.GiiModule',
+            'password'=&gt;'you password',
+            // If removed, Gii defaults to localhost only. Edit carefully to taste.
+            'ipFilters'=&gt;array('127.0.0.1','::1'),
+                        'generatorPaths'=&gt;array(
+                            'ext.giix-core', // giix generators
+            ),
+    ...
+    ),
+</code></pre>
+
+<p>create module first before using the generator, after creating the module, add your newly created module to config-&gt;main.php before running giixcrudjs &lt;-important
+generate model using giix model under that module
+generate controller using giixcrudjs under that module
+js automaticaly created on basepath js/view</p>
+
+<p>final structure</p>
+
+<pre><code>project name
+--assets
+--css
+--images
+--js
+----ext340
+----view
+--protected
+----modules
+------your modules
+...
+--themes
+----classic
+----extjs
+----webapp
+</code></pre>
+
+<p>configure theme to use
+'theme'=&gt;'webapp' or 'theme'=&gt;'extjs',</p>
+
+<p>configure component</p>
+
+<pre><code>[php]
+// autoloading model and component classes
+    'import'=&gt;array(
+        'application.models.*',
+        'application.components.*',
+                'ext.giix-components.*',
+        ...
+    ),
+</code></pre>
+
+<p>add generated controler to site/tree action, with pattern 'jun.' + model name + 'Grid', automatic site/tree action will be added in the next release</p>
+
+<pre><code>$data = "[{
+                            text:'Entri Mims',
+                            expanded: true,
+                            children:[{
+                                text: 'Mims',
+                                id: 'jun.MimsGrid',
+                                leaf: true
+                            },{
+                                text: 'your model label',
+                                id: 'jun.{model name}Grid',
+                                leaf: true
+                            },
+...
+}]";
+
+</code></pre>
+
+<p><a href="https://github.com/bluejedi/e-xgen">project link</a>
+<a href="http://www.yiiframework.com/forum/index.php?/topic/25427-ext-js-scafolding-extension/">forum link</a></p>
+
+<p>demo menyusul</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/bluejedi">bluejedi</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+              <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("31034198");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
+  </body>
+</html>
