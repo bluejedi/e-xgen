@@ -16,7 +16,6 @@ jun.<?php echo $this->modelClass; ?>Grid=Ext.extend(Ext.grid.GridPanel ,{
 			sortable:true,
 			resizable:true,                        
                         <?echo "dataIndex:'" . $column->name ."',\n";?>
-                        <?echo $this->generateColumnGrid($modelClass, $column) ."\n";?>
 			width:100
 		},
                 <?

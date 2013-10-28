@@ -6,8 +6,7 @@ jun.<?php echo $this->modelClass; ?>Win = Ext.extend(Ext.Window, {
     layout: 'form',
     modal: true,
     padding: 5,
-    closeForm: false,
-    autoScroll: true,
+    closeForm: false,    
     initComponent: function() {
         this.items = [
             {
@@ -27,15 +26,8 @@ jun.<?php echo $this->modelClass; ?>Win = Ext.extend(Ext.Window, {
                 <?php endif; ?>
                 <?php endforeach; ?>
                    
-                  ]}
-            //ini buat grid detail
-            <?php //foreach ($this->getRelations($this->modelClass) as $relation): ?>
-            <?php //if ($relation[1] == GxActiveRecord::HAS_MANY || $relation[1] == GxActiveRecord::MANY_MANY): ?>                            
-                  <?php //echo $this->generateGrid($this->modelClass, $relation) . "\n"; ?>
-            <?php //endif; ?>
-            <?php //endforeach; ?>
-            
-            ];
+                  ]
+            }];
         this.fbar = {
             xtype: 'toolbar',
             items: [
